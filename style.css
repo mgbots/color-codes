@@ -1,10 +1,10 @@
 /* style.css */
 body {
     font-family: Arial, sans-serif;
-    background-image: url('background.png'); /* Add your image file name here */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-image: url('background.png'); /* Replace with your background image file name */
+    background-size: cover; /* Ensure the image covers the entire background */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,11 +19,11 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     text-align: center;
     position: relative;
-    animation: glow 1.5s infinite alternate;
+    animation: glow 3s infinite alternate; /* Longer, smoother glowing effect */
 }
 
 .icon {
-    width: 100px; /* Adjust as needed */
+    width: 100px; /* Adjust the size as needed */
     height: auto;
     margin-bottom: 20px;
 }
@@ -49,10 +49,11 @@ button {
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker shade for hover effect */
 }
 
 .result {
@@ -63,9 +64,15 @@ button:hover {
 
 /* Glowing effect */
 @keyframes glow {
-    0% { box-shadow: 0 0 5px #ff0000; }
-    50% { box-shadow: 0 0 15px #ff0000; }
-    100% { box-shadow: 0 0 5px #ff0000; }
+    0% { 
+        box-shadow: 0 0 10px #ffffff; /* White glow */
+    }
+    50% { 
+        box-shadow: 0 0 30px #ffffff; /* Larger glow */
+    }
+    100% { 
+        box-shadow: 0 0 10px #ffffff; /* White glow */
+    }
 }
 
 /* Bounce animation */
