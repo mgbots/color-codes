@@ -4,12 +4,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f0f0f0;
+    background: url('background.png') no-repeat center center fixed;
+    background-size: cover;
     margin: 0;
 }
 
 .container {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
