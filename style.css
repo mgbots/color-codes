@@ -1,55 +1,54 @@
+/* style.css */
 body {
     font-family: Arial, sans-serif;
+    background-image: url('background.png'); /* Add your image file name here */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background: url('background.png') no-repeat center center fixed;
-    background-size: cover;
+    height: 100vh;
     margin: 0;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.9);
+    background: #fff;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     text-align: center;
-    width: 300px;
+    position: relative;
+    animation: glow 1.5s infinite alternate;
 }
 
 .icon {
-    width: 50px;
-    height: 50px;
-    margin-bottom: 10px;
-}
-
-h1 {
-    font-size: 18px;
-    margin-bottom: 15px;
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin: 10px 0;
 }
 
-input[type="text"] {
-    width: calc(100% - 22px);
+input {
     padding: 10px;
-    margin-bottom: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
 }
 
 button {
-    padding: 10px 15px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
 }
 
 button:hover {
@@ -57,18 +56,25 @@ button:hover {
 }
 
 .result {
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 16px;
-    border: 1px solid #ccc; /* Border for visibility */
-    padding: 10px; /* Padding for spacing */
-    background-color: #f9f9f9; /* Background color */
+    font-weight: bold;
 }
 
-#convertAnother {
-    margin-top: 15px;
-    background-color: #28a745;
+/* Glowing effect */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #ff0000; }
+    50% { box-shadow: 0 0 15px #ff0000; }
+    100% { box-shadow: 0 0 5px #ff0000; }
 }
 
-#convertAnother:hover {
-    background-color: #218838;
+/* Bounce animation */
+@keyframes bounce {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.bounce {
+    animation: bounce 0.5s;
 }
