@@ -3,42 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hex to Integer Converter</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Local favicon -->
-    <link rel="stylesheet" href="style.css"> <!-- External CSS file -->
+    <title>Hex Color Code to Integer Converter</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container" id="box">
-        <h1>Hex Color Code to Integer Converter By MG Bots</h1>
-        <label for="hexColor">Enter Hex Color Code:</label>
-        <input type="text" id="hexColor" placeholder="#RRGGBB" />
-        <button onclick="convertHexToInteger()">Convert</button>
-        <div class="result" id="result"></div>
+    <div class="container">
+        <div id="converterBox">
+            <img src="icon.png" alt="Icon" class="icon">
+            <h1>Hex Color Code to Integer Converter</h1>
+            <label for="hexColor">Enter Hex Color Code:</label>
+            <input type="text" id="hexColor" placeholder="#RRGGBB">
+            <button onclick="convertHexToInteger()">Convert</button>
+            <div class="result" id="result"></div>
+        </div>
+        <button id="convertAnother" style="display: none;" onclick="resetBox()">Convert Another</button>
     </div>
 
     <script>
         function convertHexToInteger() {
             const hex = document.getElementById('hexColor').value.trim();
             const resultDiv = document.getElementById('result');
-            const box = document.getElementById('box');
-
-            // Validate the hex code
+            const converterBox = document.getElementById('converterBox');
+            const convertAnotherBtn = document.getElementById('convertAnother');
+            
             if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
                 resultDiv.textContent = 'Please enter a valid hex color code (e.g., #0099ff).';
                 return;
             }
 
-            // Remove the hash (#) symbol
             const hexCode = hex.slice(1);
-
-            // Convert hex to integer
             const integerValue = parseInt(hexCode, 16);
+            resultDiv.innerHTML = `Integer Value: <strong>${integerValue}</strong>`;
+            
+            // Hide the converter box and show the "Convert Another" button
+            converterBox.style.display = 'none';
+            convertAnotherBtn.style.display = 'block';
+        }
 
-            resultDiv.textContent = `Integer Value: ${integerValue}`;
-
-            // Trigger bounce effect
-            box.classList.add('bounce');
-            setTimeout(() => box.classList.remove('bounce'), 600); // Remove bounce class after animation
+        function resetBox() {
+            const converterBox = document.getElementById('converterBox');
+            const convertAnotherBtn = document.getElementById('convertAnother');
+            const hexColorInput = document.getElementById('hexColor');
+            const resultDiv = document.getElementById('result');
+            
+            // Reset the input field and result
+            hexColorInput.value = '';
+            resultDiv.textContent = '';
+            
+            // Show the converter box and hide the "Convert Another" button
+            converterBox.style.display = 'block';
+            convertAnotherBtn.style.display = 'none';
         }
     </script>
 </body>
