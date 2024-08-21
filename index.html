@@ -8,54 +8,32 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div id="converterBox">
-            <img src="icon.png" alt="Icon" class="icon">
-            <h1>Hex Color Code to Integer Converter</h1>
-            <label for="hexColor">Enter Hex Color Code:</label>
-            <input type="text" id="hexColor" placeholder="#RRGGBB">
-            <button onclick="convertHexToInteger()">Convert</button>
-            <div class="result" id="result"></div>
-        </div>
-        <button id="convertAnother" style="display: none;" onclick="resetBox()">Convert Another</button>
+    <div class="container" id="container">
+        <img src="icon.png" alt="Converter Icon" class="icon">
+        <label for="hexColor">Enter Hex Color Code:</label>
+        <input type="text" id="hexColor" placeholder="#RRGGBB">
+        <button onclick="convertHexToInteger()">Convert</button>
+        <div class="result" id="result"></div>
     </div>
 
     <script>
         function convertHexToInteger() {
             const hex = document.getElementById('hexColor').value.trim();
             const resultDiv = document.getElementById('result');
-            const converterBox = document.getElementById('converterBox');
-            const convertAnotherBtn = document.getElementById('convertAnother');
+            const container = document.getElementById('container');
             
-            // Validate hex input
             if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
                 resultDiv.textContent = 'Please enter a valid hex color code (e.g., #0099ff).';
                 return;
             }
 
-            // Convert hex to integer
             const hexCode = hex.slice(1);
             const integerValue = parseInt(hexCode, 16);
-            resultDiv.innerHTML = `Integer Value: <strong>${integerValue}</strong>`;
+            resultDiv.textContent = `Integer Value: ${integerValue}`;
             
-            // Hide converter box and show "Convert Another" button
-            converterBox.style.display = 'none';
-            convertAnotherBtn.style.display = 'block';
-        }
-
-        function resetBox() {
-            const converterBox = document.getElementById('converterBox');
-            const convertAnotherBtn = document.getElementById('convertAnother');
-            const hexColorInput = document.getElementById('hexColor');
-            const resultDiv = document.getElementById('result');
-            
-            // Reset input field and result
-            hexColorInput.value = '';
-            resultDiv.innerHTML = '';
-            
-            // Show converter box and hide "Convert Another" button
-            converterBox.style.display = 'block';
-            convertAnotherBtn.style.display = 'none';
+            // Add bounce effect
+            container.classList.add('bounce');
+            setTimeout(() => container.classList.remove('bounce'), 500);
         }
     </script>
 </body>
