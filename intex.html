@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex to Integer Converter | MG Bots</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Local favicon -->
+    <link rel="stylesheet" href="style.css"> <!-- External CSS file -->
+</head>
+<body>
+    <div class="container" id="box">
+        <h1>Hex Color Code to Integer Converter</h1>
+        <label for="hexColor">Enter Hex Color Code:</label>
+        <input type="text" id="hexColor" placeholder="#RRGGBB" />
+        <button onclick="convertHexToInteger()">Convert</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convertHexToInteger() {
+            const hex = document.getElementById('hexColor').value.trim();
+            const resultDiv = document.getElementById('result');
+            const box = document.getElementById('box');
+
+            // Validate the hex code
+            if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
+                resultDiv.textContent = 'Please enter a valid hex color code (e.g., #0099ff).';
+                return;
+            }
+
+            // Remove the hash (#) symbol
+            const hexCode = hex.slice(1);
+
+            // Convert hex to integer
+            const integerValue = parseInt(hexCode, 16);
+
+            resultDiv.textContent = `Integer Value: ${integerValue}`;
+
+            // Trigger bounce effect
+            box.classList.add('bounce');
+            setTimeout(() => box.classList.remove('bounce'), 600); // Remove bounce class after animation
+        }
+    </script>
+</body>
+</html>
