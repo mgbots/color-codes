@@ -27,16 +27,18 @@
             const converterBox = document.getElementById('converterBox');
             const convertAnotherBtn = document.getElementById('convertAnother');
             
+            // Validate hex input
             if (!/^#[0-9A-Fa-f]{6}$/.test(hex)) {
                 resultDiv.textContent = 'Please enter a valid hex color code (e.g., #0099ff).';
                 return;
             }
 
+            // Convert hex to integer
             const hexCode = hex.slice(1);
             const integerValue = parseInt(hexCode, 16);
             resultDiv.innerHTML = `Integer Value: <strong>${integerValue}</strong>`;
             
-            // Hide the converter box and show the "Convert Another" button
+            // Hide converter box and show "Convert Another" button
             converterBox.style.display = 'none';
             convertAnotherBtn.style.display = 'block';
         }
@@ -47,11 +49,11 @@
             const hexColorInput = document.getElementById('hexColor');
             const resultDiv = document.getElementById('result');
             
-            // Reset the input field and result
+            // Reset input field and result
             hexColorInput.value = '';
             resultDiv.innerHTML = '';
             
-            // Show the converter box and hide the "Convert Another" button
+            // Show converter box and hide "Convert Another" button
             converterBox.style.display = 'block';
             convertAnotherBtn.style.display = 'none';
         }
